@@ -1,7 +1,9 @@
+from unicodedata import name
 from django.shortcuts import render, redirect
 from base.forms import RoomForm
-from .models import Room
+from .models import Room, Topic
 from django.forms import ModelForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -12,10 +14,15 @@ rooms = [
 ]
 '''
 def home(request):
-    print('**********111',request)
-    rooms = Room.objects.all()
-    print('00---0000', rooms)
-    context = {'rooms': rooms}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    rooms = Room.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(name__icontains=q) |
+        Q(description__icontains=q)
+    )
+    room_count = rooms.count()
+    topics = Topic.objects.all()
+    context = {'rooms': rooms, 'topics': topics}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
