@@ -10,7 +10,7 @@
     <!-- Room List Start -->
     <div class="roomList">
       <div class="mobile-menu">
-        <form action="{% url 'home' %}" class="header__search">
+        <form action="{% url 'home' %}" method='GET' class="header__search">
           <label>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>search</title>
@@ -28,7 +28,7 @@
       </div>
       <div class="roomList__header">
         <div>
-          <h2>Study Room</h2>
+          <h2>Study Rooms</h2>
           <p>{{room_count}} Rooms available</p>
         </div>
         <a class="btn btn--main" href="{% url 'create-room' %}">
@@ -52,9 +52,4 @@
     <!-- Activities End -->
   </div>
 </main>
-<script src="script.js"></script>
-</body>
-
-</html>
-
-{% endblock %}
+{% endblock content %}
