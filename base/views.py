@@ -1,5 +1,3 @@
-from pydoc_data.topics import topics
-from unicodedata import name
 from django.shortcuts import render, redirect
 from .forms import RoomForm, UserForm, MyUserCreationForm
 from .models import Message, Room, Topic, Message, User

@@ -1,10 +1,5 @@
-from email.policy import default
-from re import M
-from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-#from base.views import room
-from django.db.models.deletion import CASCADE
 
 
 class User(AbstractUser):
